@@ -1,7 +1,7 @@
 # coding=utf-8
 from zope.interface import Interface
-from zope.schema import Bool, Bytes, Choice, Field, Int, Text, TextLine 
-from Products.XWFMailingListManager.interfaces import IGSPostMessage
+from zope.schema import TextLine 
+from gs.group.messages.topic.interfaces import IGSPostMessage
 
 class IStartTopic(IGSPostMessage):
     topic = TextLine(title=u'Topic',
