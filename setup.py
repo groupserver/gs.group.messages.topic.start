@@ -32,8 +32,11 @@ setup(name='gs.group.messages.starttopic',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'gs.group.base',
+        'gs.group.member.canpost',
         'gs.group.messages.add',
-        'gs.group.messages.topic', # For the link to the Topic page.
+        'gs.group.messages.topic',
+        'gs.profile.email.base',
         'Products.XWFMailingListManager',
         # -*- Extra requirements: -*-
     ],
