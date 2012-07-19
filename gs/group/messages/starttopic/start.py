@@ -9,7 +9,7 @@ from gs.group.member.canpost.interfaces import IGSPostingUser
 from gs.group.base.form import GroupForm
 from gs.profile.email.base.emailuser import EmailUser
 from interfaces import IStartTopic
-from gs.group.messages.add import add_a_post
+from gs.group.messages.add.base import add_a_post
 
 class MyFileWidget(FileWidget):
     def _toFieldValue(self, input):
