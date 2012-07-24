@@ -5,11 +5,11 @@ from zope.formlib import form
 from zope.app.form import CustomWidgetFactory
 from zope.app.form.browser import FileWidget
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
-from gs.group.member.canpost.interfaces import IGSPostingUser
 from gs.group.base.form import GroupForm
+from gs.group.member.canpost.interfaces import IGSPostingUser
+from gs.group.messages.add.base import add_a_post
 from gs.profile.email.base.emailuser import EmailUser
 from interfaces import IStartTopic
-from gs.group.messages.add.base import add_a_post
 
 class MyFileWidget(FileWidget):
     def _toFieldValue(self, input):
