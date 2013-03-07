@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
-  metal:use-macro="context/@@groupserver_site_home_layout/page">
+  metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title"
            tal:define="retval view/update">Start a Topic:
@@ -25,28 +25,73 @@
     <tal:block content="structure provider:groupserver.FormStatusMessage"
       define="errors view/errors; status view/status; widgets view/widgets"
       metal:fill-slot="messages">&#160;</tal:block>
-    <tal:block metal:fill-slot="body">
-      <h1>Start a Topic</h1>
-      <form tal:condition="view/userPostingInfo/canPost" 
-        enctype="multipart/form-data"  method="post" action="."
-        id="add-to-topic" tal:attributes="action request/URL">
-        <tal:block define="widgets python:[view.widgets['fromAddress'], view.widgets['topic'], view.widgets['message']]">
+    <ul metal:fill-slot="breadcrumb">
+      <li><a tal:attributes="title string:${view/siteInfo/name} Homepage"
+             href="/" title="Home">&#8962;</a></li>
+      <li>
+        <a class="group" 
+           tal:attributes="href string:${view/groupInfo/relativeURL}/">
+          <strong
+            tal:content="view/groupInfo/name">This group</strong></a>
+      </li>
+      <li>New topic</li>
+    </ul>
+
+    <div id="gs-group-messages-starttopic" metal:fill-slot="body">
+      <h1>New topic</h1>
+
+      <form id="gs-group-messages-startopic-new" 
+            class="gs-group-messages-topic-add"
+            tal:condition="view/userPostingInfo/canPost" 
+            enctype="multipart/form-data"  method="post" action="."
+            tal:attributes="action request/URL">
+
+        <div id="gs-group-messages-topic-add-from" 
+             tal:define="widget view/widgets/fromAddress">
+          <span tal:define="width string:18; height string:24;"
+                tal:replace="structure provider:groupserver.UserImage">
+            &#9786;
+          </span>
+          <span class="muted">Post as
+          <strong tal:content="view/loggedInUser/name" 
+                  class="fn">you</strong></span>
+          <span class="readonlyWidget"
+                tal:condition="python:hasattr(widget, 'tag')"
+                tal:replace="structure widget">Widget</span>
+          <span  tal:condition="python:not(hasattr(widget, 'tag'))"
+                tal:content="structure widget">Widget</span>
+        </div><!--gs-group-messages-topic-add-from-->
+
+        <div id="gs-group-messages-starttopic-new-topic" 
+             class="form-inline required"
+             tal:define="widget view/widgets/topic">
+          <label for="form.topic">Topic</label>
+          <span  tal:condition="python:not(hasattr(widget, 'tag'))"
+                tal:content="structure widget"/>
+        </div>
+        <tal:block define="widgets python:[view.widgets['message']]">
           <tal:block replace="structure provider:groupserver.FormWidgets"/>
         </tal:block>
 
-        <div class="form-widget" id="widget-abc123" 
-          tal:define="widget python:view.widgets['uploadedFile'];"
-          tal:attributes="id string:widget-${widget/name};">
+        <div class="form-widget gs-group-messages-topic-add-file" 
+             tal:define="widget python:view.widgets['uploadedFile'];"
+             tal:attributes="id string:widget-${widget/name};">
           <label for="abc123" title="The hint for the widget"
-            tal:attributes="for widget/name; title widget/hint"
-            tal:content="widget/label">
+                 tal:attributes="for widget/name; title widget/hint"
+                 tal:content="widget/label">
             A label
           </label>
-          <div id="fileList">&#160;</div>
-          <span
-            tal:condition="python:hasattr(widget, 'tag')"
-            tal:replace="structure widget">Widget</span>
-        </div><!--form-widget-->
+          <div class="gs-group-messages-topic-add-file-files">
+            <div class="gs-group-messages-topic-add-file-files-list">
+              <span style="display:none;">&#160;</span>
+            </div><!--gs-group-messages-topic-add-file-files-list-->
+            <div class="gs-group-messages-topic-add-file-files-widget"
+                 tal:condition="python:hasattr(widget, 'tag')"
+                 tal:content="structure widget">
+              Widget
+            </div><!--gs-group-messages-topic-add-file-files-widget-->
+          </div><!--gs-group-messages-topic-add-file-files-->
+        </div><!--gs-group-messages-topic-add-file-->
 
         <div class="buttons" tal:condition="view/availableActions">
           <tal:block repeat="button view/availableActions">
@@ -55,8 +100,8 @@
           </tal:block>
         </div><!--buttons-->
       </form><!--add-to-topic-->
-    </tal:block>
-    <tal:block metal:fill-slot="javascript">
+    </div>
+    <!--tal:block metal:fill-slot="javascript">
       <script type="text/javascript"
         src="/++resource++multiple_file_upload/jquery.form.js">&#160;</script>
       <script type="text/javascript"
@@ -76,6 +121,6 @@
               GSFileUpload.init();
           });
       </script>
-    </tal:block>
+    </tal:block-->
   </body>
 </html>
