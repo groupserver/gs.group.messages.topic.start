@@ -66,8 +66,9 @@
              class="form-inline required"
              tal:define="widget view/widgets/topic">
           <label for="form.topic">Topic</label>
-          <span  tal:condition="python:not(hasattr(widget, 'tag'))"
-                tal:content="structure widget"/>
+          <input id="form.topic" class="textType" 
+                 type="text" value="" size="20" name="form.topic" 
+                 autofocus="true"/>
         </div>
         <tal:block define="widgets python:[view.widgets['message']]">
           <tal:block replace="structure provider:groupserver.FormWidgets"/>
@@ -101,10 +102,11 @@
         </div><!--buttons-->
       </form><!--add-to-topic-->
     </div>
-    <!--tal:block metal:fill-slot="javascript">
+    <tal:block metal:fill-slot="javascript">
       <script type="text/javascript"
-        src="/++resource++multiple_file_upload/jquery.form.js">&#160;</script>
-      <script type="text/javascript"
+              src="/++resource++gs-group-messages-topic-multifile-20130201.js"
+              defer="true">&#160;</script>
+      <!--script type="text/javascript"
         src="/++resource++multiple_file_upload/jquery.MetaData.js">&#160;</script>
       <script type="text/javascript"
         src="/++resource++multiple_file_upload/jquery.MultiFile.js">&#160;</script>
@@ -120,7 +122,7 @@
               GSPopupFormHelp.init('#add-to-topic');
               GSFileUpload.init();
           });
-      </script>
-    </tal:block-->
+      </script-->
+    </tal:block>
   </body>
 </html>
