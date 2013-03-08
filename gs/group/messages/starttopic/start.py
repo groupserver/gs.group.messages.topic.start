@@ -79,7 +79,8 @@ class StartTopic(GroupForm):
                 #   messages before posting them.
                 self.status = r['message']
             else:
-                self.status = u'<a href="%(id)s#(id)s">%(message)s</a>' % r
+                s = u'<p><a href="{id}#{id}">{message}</a></p>'
+                self.status = s.format(r)
         assert self.status
         assert type(self.status) == unicode
 
