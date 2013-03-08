@@ -11,10 +11,12 @@ from gs.group.messages.add.base import add_a_post
 from gs.profile.email.base.emailuser import EmailUser
 from interfaces import IStartTopic
 
+
 class MyFileWidget(FileWidget):
     def _toFieldValue(self, input):
         #--=mpj17=-- Lookie! A hack!
         return self.context.missing_value
+
 
 class StartTopic(GroupForm):
     """View of a single GroupServer Topic"""
@@ -22,7 +24,7 @@ class StartTopic(GroupForm):
     pageTemplateFileName = 'browser/templates/start.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
     form_fields = form.Fields(IStartTopic, render_context=False)
-    
+
     def __init__(self, context, request):
         print "StartTopic"
         GroupForm.__init__(self, context, request)
@@ -43,57 +45,57 @@ class StartTopic(GroupForm):
                 fromAddr = ''
         data = {
           'fromAddress': fromAddr,
-          'message':     u'',
-          'sticky':      False, # New topics cannot be sticky
+          'message': u'',
+          'sticky': False,  # New topics cannot be sticky
         }
         self.widgets = form.setUpWidgets(
             self.form_fields, self.prefix, self.context,
             self.request, form=self, data=data,
             ignore_request=ignore_request)
         assert self.widgets
-        
+
     @form.action(label=u'Start', failure='handle_action_failure')
     def handle_add(self, action, data):
-      if self.__message != data['message']:
-          # --=mpj17=-- Formlib sometimes submits twice submits twice
-          self.__message = data['message']
-          uploadedFiles = [self.request[k] 
-                           for k in self.request.form 
-                           if (('form.uploadedFile' in k) and 
-                                self.request[k])]
-          r = add_a_post(
-            groupId=self.groupInfo.id, 
-            siteId=self.siteInfo.id, 
-            replyToId='', 
-            topic=data['topic'], 
-            message=data['message'],
-            tags=[], 
-            email=data['fromAddress'], 
-            uploadedFiles=uploadedFiles,
-            context=self.context, 
-            request=self.request)
-          if r['error']:
-              # TODO make a seperate validator for messages that the
-              #   web and email subsystems can use to verifiy the
-              #   messages before posting them.
-              self.status = r['message']
-          else:
-              self.status = u'<a href="%(id)s#(id)s">%(message)s</a>' % r
-      assert self.status
-      assert type(self.status) == unicode
+        if self.__message != data['message']:
+            # --=mpj17=-- Formlib sometimes submits twice submits twice
+            self.__message = data['message']
+            uploadedFiles = [self.request[k]
+                             for k in self.request.form
+                             if (('form.uploadedFile' in k) and
+                                  self.request[k])]
+            r = add_a_post(
+              groupId=self.groupInfo.id,
+              siteId=self.siteInfo.id,
+              replyToId='',
+              topic=data['topic'],
+              message=data['message'],
+              tags=[],
+              email=data['fromAddress'],
+              uploadedFiles=uploadedFiles,
+              context=self.context,
+              request=self.request)
+            if r['error']:
+                # TODO make a seperate validator for messages that the
+                #   web and email subsystems can use to verifiy the
+                #   messages before posting them.
+                self.status = r['message']
+            else:
+                self.status = u'<a href="%(id)s#(id)s">%(message)s</a>' % r
+        assert self.status
+        assert type(self.status) == unicode
 
     def handle_action_failure(self, action, data, errors):
-      if len(errors) == 1:
-          self.status = u'<p>There is an error:</p>'
-      else:
-          self.status = u'<p>There are errors:</p>'
-      assert type(self.status) == unicode
+        if len(errors) == 1:
+            self.status = u'<p>There is an error:</p>'
+        else:
+            self.status = u'<p>There are errors:</p>'
+        assert type(self.status) == unicode
 
     @Lazy
     def userInfo(self):
         retval = createObject('groupserver.LoggedInUser', self.context)
         return retval
-        
+
     @Lazy
     def userPostingInfo(self):
         g = self.groupInfo.groupObj
@@ -105,4 +107,3 @@ class StartTopic(GroupForm):
         retval = getMultiAdapter((g, self.userInfo), IGSPostingUser)
         assert retval
         return retval
-
