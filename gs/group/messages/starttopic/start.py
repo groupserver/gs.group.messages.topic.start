@@ -26,7 +26,6 @@ class StartTopic(GroupForm):
     form_fields = form.Fields(IStartTopic, render_context=False)
 
     def __init__(self, context, request):
-        print "StartTopic"
         GroupForm.__init__(self, context, request)
         self.__message = None
         cw = CustomWidgetFactory(MyFileWidget)

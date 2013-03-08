@@ -3,9 +3,20 @@
   xmlns:browser="http://namespaces.zope.org/browser">
 
   <browser:page 
-    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder" 
     name="newTopic.html"
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder" 
     class=".start.StartTopic" 
     permission="zope2.View" />
+
+  <browser:page 
+    name="topics.json"
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder" 
+    class=".subject.Subjects" 
+    permission="zope2.View" />
+
+  <browser:resource
+    name="gs-group-messages-startopic-20130308.js"
+    file="browser/javascript/start.js"
+    permission="zope2.Public" />
 
 </configure>

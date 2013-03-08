@@ -68,7 +68,7 @@
           <label for="form.topic">Topic</label>
           <input id="form.topic" class="textType" 
                  type="text" value="" size="20" name="form.topic" 
-                 autofocus="true"/>
+                 autocomplete="off" autofocus="true"/>
         </div>
         <tal:block define="widgets python:[view.widgets['message']]">
           <tal:block replace="structure provider:groupserver.FormWidgets"/>
@@ -106,23 +106,9 @@
       <script type="text/javascript"
               src="/++resource++gs-group-messages-topic-multifile-20130201.js"
               defer="true">&#160;</script>
-      <!--script type="text/javascript"
-        src="/++resource++multiple_file_upload/jquery.MetaData.js">&#160;</script>
       <script type="text/javascript"
-        src="/++resource++multiple_file_upload/jquery.MultiFile.js">&#160;</script>
-      <script type="text/javascript"
-        src="/++resource++multiple_file_upload/jquery.blockUI.js">&#160;</script>
-      <script type="text/javascript"
-        src="/++resource++gsfileupload-20090622.js">&#160;</script>
-      <script type="text/javascript"
-        src="/++resource++popup_help-20071218.js">&#160;</script>
-      <script type="text/javascript">
-          jQuery.noConflict();
-          jQuery(document).ready( function () {
-              GSPopupFormHelp.init('#add-to-topic');
-              GSFileUpload.init();
-          });
-      </script-->
+              src="/++resource++gs-group-messages-startopic-20130308.js"
+              defer="true">&#160;</script>
     </tal:block>
   </body>
 </html>
