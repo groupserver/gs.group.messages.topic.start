@@ -11,7 +11,7 @@
     <tal:block metal:fill-slot="metadata">
       <link rel="up" href="#"
         tal:attributes="title view/groupInfo/name;
-        href view/groupInfo/relativeURL"/>
+        href string:${view/groupInfo/relativeURL}/"/>
       <link rel="bookmark" title="Group Homepage" href="/"
         tal:attributes="title string:${view/groupInfo/name} Homepage;"/>
 
