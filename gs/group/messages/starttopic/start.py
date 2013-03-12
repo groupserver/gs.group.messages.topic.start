@@ -8,6 +8,7 @@ from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from gs.group.base.form import GroupForm
 from gs.group.member.canpost.interfaces import IGSPostingUser
 from gs.group.messages.add.base import add_a_post
+from gs.group.messages.privacy import MessagesPrivacy
 from gs.profile.email.base.emailuser import EmailUser
 from interfaces import IStartTopic
 
@@ -30,6 +31,11 @@ class StartTopic(GroupForm):
         self.__message = None
         cw = CustomWidgetFactory(MyFileWidget)
         self.form_fields['uploadedFile'].custom_widget = cw
+
+    @Lazy
+    def privacy(self):
+        retval = MessagesPrivacy(self.context)
+        return retval
 
     def setUpWidgets(self, ignore_request=True):
         self.adapters = {}

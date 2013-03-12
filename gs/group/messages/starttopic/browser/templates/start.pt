@@ -95,13 +95,26 @@
         </div><!--gs-group-messages-topic-add-file-->
 
         <div class="buttons" tal:condition="view/availableActions">
-          <tal:block repeat="button view/availableActions">
-            <div class="formelementbutton"
-              tal:content="structure button/render">Button</div>
-          </tal:block>
+          <span id="gs-group-messages-topic-add-privacy-summary"
+                title="Privacy"
+                tal:attributes="title string:Privacy: ${view/privacy/visibility};">
+            <span class="muted" role="button" aria-haspopup="true" >Post will be
+            <span class="vis"
+                  tal:content="view/privacy/visibility">lurid</span></span>
+            (?)
+          </span>
+          <div class="formelementbutton"
+               tal:define="actions view/availableActions">
+            <span 
+              tal:replace="structure python:actions[0].render()">Button</span>
+          </div>
         </div><!--buttons-->
       </form><!--add-to-topic-->
-    </div>
+      <div id="gs-group-messages-topic-add-privacy" style="display:none;"
+           tal:content="structure provider:groupserver.PostPrivacy">
+        Privacy statement
+      </div><!--gs-group-messages-topic-add-privacy-->
+    </div><!--gs-group-messages-starttopic-->
     <tal:block metal:fill-slot="javascript">
       <script type="text/javascript"
               src="/++resource++gs-group-messages-topic-multifile-20130201.js"
