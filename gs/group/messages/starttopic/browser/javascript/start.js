@@ -2,8 +2,7 @@ jQuery.noConflict();
 
 function GSGroupMessagesStartTopic (topicInputId) {
     
-    var topicInput = null;
-    var topics = null;
+    var topicInput = null, topics = null;
 
     function topic_source(query, process) {
         function load(data) {
@@ -26,8 +25,7 @@ function GSGroupMessagesStartTopic (topicInputId) {
 
 
 jQuery(window).load( function () {
-    var h = null;
-    var d = null;
+    var h = null, d = null;
     h = jQuery('#gs-group-messages-topic-add-privacy').html();
     d = {animation: true, html: true, placement: 'top', trigger: 'click', 
          content: h};
