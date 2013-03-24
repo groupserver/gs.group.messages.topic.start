@@ -18,5 +18,9 @@
     name="gs-group-messages-startopic-20130308.js"
     file="browser/javascript/start.js"
     permission="zope2.Public" />
+  <browser:resource
+    name="gs-group-messages-startopic-min-20130308.js"
+    file="browser/javascript/start-min.js"
+    permission="zope2.Public" />
 
 </configure>
