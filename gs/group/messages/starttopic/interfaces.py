@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 from zope.schema import TextLine
 from gs.group.messages.topic.interfaces import IGSPostMessage
 
