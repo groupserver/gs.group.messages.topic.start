@@ -1,4 +1,4 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 import os
 from setuptools import setup, find_packages
 from version import get_version
@@ -32,13 +32,15 @@ setup(name='gs.group.messages.starttopic',
     zip_safe=True,
     install_requires=[
         'setuptools',
+        'gs.content.js.bootstrap',  # For the JS
+        'gs.content.layout',
         'gs.group.base',
         'gs.group.member.canpost',
         'gs.group.messages.add.base',
+        'gs.group.messages.privacy',  # For the privacy content provider
         'gs.group.messages.topic',
         'gs.profile.email.base',
         'Products.XWFMailingListManager',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
