@@ -7,7 +7,7 @@ The Start a Topic page for GroupServer
 
 :Author: `Michael JasonSmith`_
 :Contact: Michael JasonSmith <mpj17@onlinegroups.net>
-:Date: 2013-03-12
+:Date: 2013-03-25
 :Organization: `GroupServer.org`_
 :Copyright: This document is licensed under a
   `Creative Commons Attribution-Share Alike 3.0 New Zealand License`_
@@ -41,9 +41,9 @@ JavaScript
 ----------
 
 The resource ``/++resource++gs-group-messages-startopic-20130308.js``
-provides the JavaScript for the page. It creates the Typeahead widget after
-the page loads. It then request ``topics.json`` using AJAX once the user
-starts typing in the ``Topic`` field.
+provides the JavaScript for the page. It creates a Bootstrap Typeahead_
+widget after the page loads. It then request ``topics.json`` using AJAX
+once the user starts typing in the ``Topic`` field.
 
 Resources
 =========
@@ -59,5 +59,6 @@ Resources
 .. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
    http://creativecommons.org/licenses/by-sa/3.0/nz/
 ..  _Typeahead: http://twitter.github.com/bootstrap/javascript.html#typeahead
-
 ..  [#topic] See ``gs.group.messages.topic``.
+
+..  LocalWords:  Typeahead json
