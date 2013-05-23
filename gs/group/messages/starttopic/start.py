@@ -69,23 +69,23 @@ class StartTopic(GroupForm):
                              if (('form.uploadedFile' in k) and
                                   self.request[k])]
             r = add_a_post(
-              groupId=self.groupInfo.id,
-              siteId=self.siteInfo.id,
-              replyToId='',
-              topic=data['topic'],
-              message=data['message'],
-              tags=[],
-              email=data['fromAddress'],
-              uploadedFiles=uploadedFiles,
-              context=self.context,
-              request=self.request)
+                  groupId=self.groupInfo.id,
+                  siteId=self.siteInfo.id,
+                  replyToId='',
+                  topic=data['topic'],
+                  message=data['message'],
+                  tags=[],
+                  email=data['fromAddress'],
+                  uploadedFiles=uploadedFiles,
+                  context=self.context,
+                  request=self.request)
             if r['error']:
                 # TODO make a seperate validator for messages that the
                 #   web and email subsystems can use to verifiy the
                 #   messages before posting them.
                 self.status = r['message']
             else:
-                s = u'<p><a href="{id}#{id}">{message}</a></p>'
+                s = u'<p><a href="{id}#{id}">{message}</a></p>'  # FIXME: No id
                 self.status = s.format(r)
         assert self.status
         assert type(self.status) == unicode
