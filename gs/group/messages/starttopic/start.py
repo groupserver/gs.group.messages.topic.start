@@ -85,8 +85,8 @@ class StartTopic(GroupForm):
                 #   messages before posting them.
                 self.status = r['message']
             else:
-                s = u'<p><a href="{id}#{id}">{message}</a></p>'  # FIXME: No id
-                self.status = s.format(r)
+                s = u'<p><a href="{id}#{id}">{message}</a></p>'
+                self.status = s.format(**r)
         assert self.status
         assert type(self.status) == unicode
 
