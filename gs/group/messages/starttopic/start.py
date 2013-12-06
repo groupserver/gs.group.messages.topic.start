@@ -1,16 +1,30 @@
 # -*- coding: utf-8 -*-
+##############################################################################
+#
+# Copyright © 2013 OnlineGroups.net and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+from __future__ import absolute_import
+from zope.app.form import CustomWidgetFactory
+from zope.app.form.browser import FileWidget
 from zope.cachedescriptors.property import Lazy
 from zope.component import getMultiAdapter, createObject
 from zope.formlib import form
-from zope.app.form import CustomWidgetFactory
-from zope.app.form.browser import FileWidget
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from gs.group.base.form import GroupForm
 from gs.group.member.canpost.interfaces import IGSPostingUser
 from gs.group.messages.add.base import add_a_post
 from gs.group.messages.privacy import MessagesPrivacy
 from gs.profile.email.base.emailuser import EmailUser
-from interfaces import IStartTopic
+from .interfaces import IStartTopic
 
 
 class MyFileWidget(FileWidget):

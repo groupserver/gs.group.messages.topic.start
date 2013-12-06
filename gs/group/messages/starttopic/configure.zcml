@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<configure xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser">
+<!-- Copyright © 2013 E-Democracy.org and Contributors. -->
+<!-- All Rights Reserved. -->
 
-  <browser:page 
+<!-- This software is subject to the provisions of the Zope Public -->
+<!-- License, Version 2.1 (ZPL).  A copy of the ZPL should accompany this -->
+<!-- distribution. -->
+
+<!-- THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED -->
+<!-- WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED -->
+<!-- WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE. -->
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:page
     name="newTopic.html"
-    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder" 
-    class=".start.StartTopic" 
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
+    class=".start.StartTopic"
     permission="zope2.View" />
 
-  <browser:page 
+  <browser:page
     name="topics.json"
-    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder" 
-    class=".subject.Subjects" 
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
+    class=".subject.Subjects"
     permission="zope2.View" />
 
   <browser:resource

@@ -1,35 +1,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:metal="http://xml.zope.org/namespaces/metal"
-  xmlns:tal="http://xml.zope.org/namespaces/tal"
-  metal:use-macro="context/@@groupserver_layout/page">
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title"
            tal:define="retval view/update">Start a Topic:
-      <span tal:replace="view/groupInfo/name"/>:
-      <span tal:replace="view/siteInfo/name"/>
+    <span tal:replace="view/groupInfo/name"/>:
+    <span tal:replace="view/siteInfo/name"/>
     </title>
     <tal:block metal:fill-slot="metadata">
       <link rel="up" href="#"
-        tal:attributes="title view/groupInfo/name;
-        href string:${view/groupInfo/relativeURL}/"/>
+            tal:attributes="title view/groupInfo/name;
+                            href string:${view/groupInfo/relativeURL}/"/>
       <link rel="bookmark" title="Group Homepage" href="/"
-        tal:attributes="title string:${view/groupInfo/name} Homepage;"/>
+            tal:attributes="title string:${view/groupInfo/name} Homepage;"/>
 
-      <link rel="home" 
-        tal:attributes="title string:${view/siteInfo/name} Homepage;
-        href view/siteInfo/url"/>
+      <link rel="home"
+            tal:attributes="title string:${view/siteInfo/name} Homepage;
+                            href view/siteInfo/url"/>
       <link rel="help" title="Help" href="/help"/>
     </tal:block>
   </head>
   <body>
     <tal:block content="structure provider:groupserver.FormStatusMessage"
-      define="errors view/errors; status view/status; widgets view/widgets"
-      metal:fill-slot="messages">&#160;</tal:block>
+               define="errors view/errors; status view/status;
+                       widgets view/widgets"
+               metal:fill-slot="messages">&#160;</tal:block>
     <ul metal:fill-slot="breadcrumb">
       <li><a tal:attributes="title string:${view/siteInfo/name} Homepage"
              href="/" title="Home">&#8962;</a></li>
       <li>
-        <a class="group" 
+        <a class="group"
            tal:attributes="href string:${view/groupInfo/relativeURL}/">
           <strong
             tal:content="view/groupInfo/name">This group</strong></a>
@@ -40,41 +41,41 @@
     <div id="gs-group-messages-starttopic" metal:fill-slot="body">
       <h1>New topic</h1>
 
-      <form id="gs-group-messages-startopic-new" 
+      <form id="gs-group-messages-startopic-new"
             class="gs-group-messages-topic-add gs-content-js-required"
-            tal:condition="view/userPostingInfo/canPost" 
+            tal:condition="view/userPostingInfo/canPost"
             enctype="multipart/form-data"  method="post" action="."
             tal:attributes="action request/URL">
 
-        <div id="gs-group-messages-topic-add-from" 
+        <div id="gs-group-messages-topic-add-from"
              tal:define="widget view/widgets/fromAddress">
           <span tal:define="width string:18; height string:24;"
                 tal:replace="structure provider:groupserver.UserImage">
             &#9786;
           </span>
           <span class="muted">Post as
-          <strong tal:content="view/loggedInUser/name" 
+          <strong tal:content="view/loggedInUser/name"
                   class="fn">you</strong></span>
           <span class="readonlyWidget"
                 tal:condition="python:hasattr(widget, 'tag')"
                 tal:replace="structure widget">Widget</span>
           <span  tal:condition="python:not(hasattr(widget, 'tag'))"
-                tal:content="structure widget">Widget</span>
+                 tal:content="structure widget">Widget</span>
         </div><!--gs-group-messages-topic-add-from-->
 
-        <div id="gs-group-messages-starttopic-new-topic" 
+        <div id="gs-group-messages-starttopic-new-topic"
              class="form-inline required"
              tal:define="widget view/widgets/topic">
           <label for="form.topic">Topic</label>
-          <input id="form.topic" class="textType" 
-                 type="text" value="" size="20" name="form.topic" 
+          <input id="form.topic" class="textType"
+                 type="text" value="" size="20" name="form.topic"
                  autocomplete="off" autofocus="true"/>
         </div>
         <tal:block define="widgets python:[view.widgets['message']]">
           <tal:block replace="structure provider:groupserver.FormWidgets"/>
         </tal:block>
 
-        <div class="form-widget gs-group-messages-topic-add-file" 
+        <div class="form-widget gs-group-messages-topic-add-file"
              tal:define="widget python:view.widgets['uploadedFile'];"
              tal:attributes="id string:widget-${widget/name};">
           <label for="abc123" title="The hint for the widget"
@@ -105,7 +106,7 @@
           </span>
           <div class="formelementbutton"
                tal:define="actions view/availableActions">
-            <span 
+            <span
               tal:replace="structure python:actions[0].render()">Button</span>
           </div>
         </div><!--buttons-->
