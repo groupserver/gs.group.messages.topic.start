@@ -58,6 +58,7 @@ setup(name='gs.group.messages.starttopic',
         'Zope2',
         'gs.content.js.bootstrap',  # For the JS
         'gs.content.layout',
+        'gs.core',
         'gs.database',
         'gs.group.base',
         'gs.group.member.canpost',
