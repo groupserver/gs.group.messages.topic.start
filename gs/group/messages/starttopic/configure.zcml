@@ -11,7 +11,8 @@
 <!-- WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND -->
 <!-- FITNESS FOR A PARTICULAR PURPOSE. -->
 <configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser">
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="groupserver">
 
   <browser:page
     name="newTopic.html"
@@ -26,12 +27,11 @@
     permission="zope2.View" />
 
   <browser:resource
-    name="gs-group-messages-startopic-20130308.js"
+    name="gs-group-messages-startopic-20140327.js"
     file="browser/javascript/start.js"
     permission="zope2.Public" />
   <browser:resource
-    name="gs-group-messages-startopic-min-20130308.js"
+    name="gs-group-messages-startopic-min-20140327.js"
     file="browser/javascript/start-min.js"
     permission="zope2.Public" />
-
 </configure>
