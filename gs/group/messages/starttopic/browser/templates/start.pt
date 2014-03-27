@@ -27,8 +27,12 @@
                        widgets view/widgets"
                metal:fill-slot="messages">&#160;</tal:block>
     <ul metal:fill-slot="breadcrumb">
-      <li><a tal:attributes="title string:${view/siteInfo/name} Homepage"
-             href="/" title="Home">&#8962;</a></li>
+      <li>
+        <a href="/" class="icon-alone">
+          <span aria-hidden="true" data-icon="&#x2302;"></span>
+          <span class="screen-reader-text">Site home page</span>
+        </a>
+      </li>
       <li>
         <a class="group"
            tal:attributes="href string:${view/groupInfo/relativeURL}/">
