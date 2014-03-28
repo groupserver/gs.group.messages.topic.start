@@ -125,7 +125,7 @@
               src="/++resource++gs-group-messages-startopic-min-20140327.js"
               defer="defer"> </script>
       <script type="text/javascript"
-              src="/++resource++gs-group-messages-topic-compose-min-20130522.js"
+              src="/++resource++gs-group-messages-topic-compose-min-20140327.js"
               defer="defer"> </script>
     </tal:block>
   </body>
