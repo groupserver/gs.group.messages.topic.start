@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright © 2013 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -14,7 +14,7 @@
 ##############################################################################
 from __future__ import unicode_literals
 from zope.schema import TextLine
-from gs.group.messages.topic.interfaces import IGSPostMessage
+from gs.group.messages.topic.base.interfaces import IGSPostMessage
 
 
 class IStartTopic(IGSPostMessage):
