@@ -1,0 +1,63 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2015-02-25 01:04+0000\n"
+"PO-Revision-Date: 2015-02-24 17:06-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#. Default: "There are errors:"
+#: ./start.py:113
+msgid "errors"
+msgstr "There are errors:"
+
+#. Default: "New topic"
+#: ./browser/templates/start.pt:48
+msgid "new-topic"
+msgstr "New topic"
+
+#. Default: "Post as ${memberName}"
+#: ./browser/templates/start.pt:63
+msgid "post-as"
+msgstr "Post as ${memberName}"
+
+#. Default: "Post will be ${privacy}"
+#: ./browser/templates/start.pt:110
+msgid "privacy"
+msgstr "Post will be ${privacy}"
+
+#. Default: "There is an error:"
+#: ./start.py:111
+msgid "single-error"
+msgstr "There is an error"
+
+#. Default: "Start"
+#: ./start.py:77
+msgid "start-button"
+msgstr "Start"
+
+#. Default: "Start a new topic"
+#: ./start.py:39
+msgid "start-topic-label"
+msgstr "Start a new topic"
+
+#. Default: "Topic"
+#: ./browser/templates/start.pt:75
+#: ./interfaces.py:23
+msgid "topic"
+msgstr "Topic"
+
+# The title of the topic. This appears as the subject of the email messages that are sent out.
+#. Default: "The title of the topic. This appears as the subject of the email messages that are sent out."
+#: ./interfaces.py:24
+msgid "topic-desc"
+msgstr ""
+

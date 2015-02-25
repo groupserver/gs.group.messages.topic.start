@@ -1,6 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="gs.group.messages.topic.start"
       metal:use-macro="context/@@groupserver_layout/page">
   <head>
     <title metal:fill-slot="title"
@@ -43,7 +45,7 @@
     </ul>
 
     <div id="gs-group-messages-starttopic" metal:fill-slot="body">
-      <h1>New topic</h1>
+      <h1 i18n:translate="new-topic">New topic</h1>
 
       <form id="gs-group-messages-startopic-new"
             class="gs-group-messages-topic-add gs-content-js-required"
@@ -57,9 +59,9 @@
                 tal:replace="structure provider:groupserver.UserImage">
             &#9786;
           </span>
-          <span class="muted">Post as
+          <span class="muted" i18n:translate="post-as">Post as
           <strong tal:content="view/loggedInUser/name"
-                  class="fn">you</strong></span>
+                  i18n:name="memberName" class="fn">you</strong></span>
           <span class="readonlyWidget"
                 tal:condition="python:hasattr(widget, 'tag')"
                 tal:replace="structure widget">Widget</span>
@@ -70,7 +72,7 @@
         <div id="gs-group-messages-starttopic-new-topic"
              class="form-inline required"
              tal:define="widget view/widgets/topic">
-          <label for="form.topic">Topic</label>
+          <label for="form.topic" i18n:translate="topic">Topic</label>
           <input id="form.topic" class="textType"
                  type="text" value="" size="20" name="form.topic"
                  autocomplete="off" autofocus="true"/>
@@ -103,8 +105,9 @@
           <span id="gs-group-messages-topic-add-privacy-summary"
                 title="Privacy"
                 tal:attributes="title string:Privacy: ${view/privacy/visibility};">
-            <span class="muted" role="button" aria-haspopup="true" >Post will be
-            <span class="vis"
+            <span class="muted" role="button" aria-haspopup="true"
+                  i18n:translate="privacy">Post will be
+            <span class="vis" i18n:name="privacy"
                   tal:content="view/privacy/visibility">lurid</span></span>
             (?)
           </span>

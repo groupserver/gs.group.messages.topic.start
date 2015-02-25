@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
-# Copyright © 2013 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -11,8 +11,8 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
-from __future__ import absolute_import
+############################################################################
+from __future__ import absolute_import, unicode_literals
 from zope.app.form import CustomWidgetFactory
 from zope.app.form.browser import FileWidget
 from zope.cachedescriptors.property import Lazy
@@ -25,6 +25,7 @@ from gs.group.messages.add.base import add_a_post
 from gs.group.messages.privacy import MessagesPrivacy
 from gs.profile.email.base.emailuser import EmailUser
 from .interfaces import IStartTopic
+from . import GSMessageFactory as _
 
 
 class MyFileWidget(FileWidget):
@@ -35,13 +36,13 @@ class MyFileWidget(FileWidget):
 
 class StartTopic(GroupForm):
     """View of a single GroupServer Topic"""
-    label = u'Start a New Topic'
+    label = _('start-topic-label', 'Start a new topic')
     pageTemplateFileName = 'browser/templates/start.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
     form_fields = form.Fields(IStartTopic, render_context=False)
 
     def __init__(self, context, request):
-        GroupForm.__init__(self, context, request)
+        super(StartTopic, self).__init__(context, request)
         self.__message = None
         cw = CustomWidgetFactory(MyFileWidget)
         self.form_fields['uploadedFile'].custom_widget = cw
@@ -63,9 +64,9 @@ class StartTopic(GroupForm):
             else:
                 fromAddr = ''
         data = {
-          'fromAddress': fromAddr,
-          'message': u'',
-          'sticky': False,  # New topics cannot be sticky
+            'fromAddress': fromAddr,
+            'message': '',
+            'sticky': False,  # New topics cannot be sticky
         }
         self.widgets = form.setUpWidgets(
             self.form_fields, self.prefix, self.context,
@@ -73,7 +74,8 @@ class StartTopic(GroupForm):
             ignore_request=ignore_request)
         assert self.widgets
 
-    @form.action(label=u'Start', failure='handle_action_failure')
+    @form.action(label=_('start-button', 'Start'), name="start",
+                 failure='handle_action_failure')
     def handle_add(self, action, data):
         if self.__message != data['message']:
             # --=mpj17=-- Formlib sometimes submits twice submits twice
@@ -81,35 +83,35 @@ class StartTopic(GroupForm):
             uploadedFiles = [self.request[k]
                              for k in self.request.form
                              if (('form.uploadedFile' in k) and
-                                  self.request[k])]
+                                 self.request[k])]
             r = add_a_post(
-                  groupId=self.groupInfo.id,
-                  siteId=self.siteInfo.id,
-                  replyToId='',
-                  topic=data['topic'],
-                  message=data['message'],
-                  tags=[],
-                  email=data['fromAddress'],
-                  uploadedFiles=uploadedFiles,
-                  context=self.context,
-                  request=self.request)
+                groupId=self.groupInfo.id,
+                siteId=self.siteInfo.id,
+                replyToId='',
+                topic=data['topic'],
+                message=data['message'],
+                tags=[],
+                email=data['fromAddress'],
+                uploadedFiles=uploadedFiles,
+                context=self.context,
+                request=self.request)
             if r['error']:
                 # TODO make a seperate validator for messages that the
                 #   web and email subsystems can use to verifiy the
                 #   messages before posting them.
                 self.status = r['message']
             else:
-                s = u'<p><a href="{id}#{id}">{message}</a></p>'
+                s = '<p><a href="{id}#{id}">{message}</a></p>'
                 self.status = s.format(**r)
         assert self.status
         assert type(self.status) == unicode
 
     def handle_action_failure(self, action, data, errors):
         if len(errors) == 1:
-            self.status = u'<p>There is an error:</p>'
+            s = _('single-error', 'There is an error:')
         else:
-            self.status = u'<p>There are errors:</p>'
-        assert type(self.status) == unicode
+            s = _('errors', 'There are errors:')
+        self.status = '<p>{0}</p>'.format(s)
 
     @Lazy
     def userInfo(self):

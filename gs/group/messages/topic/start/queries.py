@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
-# Copyright © 2013 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -11,7 +11,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 import sqlalchemy as sa
 from gs.database import getSession, getTable
 
@@ -31,5 +31,6 @@ class TopicsQuery(object):
 
         session = getSession()
         r = session.execute(s)
-        retval = [x['original_subject'].encode('ascii', 'ignore') for x in r]
+        retval = [x['original_subject'].encode('ascii', 'ignore')
+                  for x in r]
         return retval

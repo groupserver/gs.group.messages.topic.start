@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
 # Copyright © 2013, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
@@ -11,15 +11,17 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import unicode_literals
 from zope.schema import TextLine
 from gs.group.messages.topic.base.interfaces import IGSPostMessage
+from . import GSMessageFactory as _
 
 
 class IStartTopic(IGSPostMessage):
-    topic = TextLine(title='Topic',
-                        description='The title of the topic. This appears '
-                          'as the subject of the email messages that are '
-                          'sent out.',
-                        required=True)
+    topic = TextLine(
+        title=_('topic', 'Topic'),
+        description=_('topic-desc',
+                      'The title of the topic. This appears as the subject '
+                      'of the email messages that are sent out.'),
+        required=True)
