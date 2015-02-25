@@ -54,6 +54,8 @@ Resources
 
 - Code repository:
   https://github.com/groupserver/gs.group.messages.topic.start
+- Translation:
+  https://www.transifex.com/projects/p/gs-group-messages-topic-start/
 - Questions and comments to
   http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
