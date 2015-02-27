@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
-# Copyright © 2013, 2014 OnlineGroups.net and Contributors.
+# Copyright © 2013, 2014, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -11,11 +11,10 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import absolute_import, unicode_literals
 from json import dumps as to_json
 from zope.cachedescriptors.property import Lazy
-from gs.core import to_ascii
 from gs.group.base import GroupPage
 from .queries import TopicsQuery
 
@@ -24,8 +23,8 @@ class Subjects(GroupPage):
 
     def __init__(self, group, request):
         super(Subjects, self).__init__(group, request)
-        request.response.setHeader(to_ascii("Content-Type"),
-                                    to_ascii('application/json; charset=ascii'))
+        request.response.setHeader(b"Content-Type",
+                                   b'application/json; charset=ascii')
 
     @Lazy
     def topicsQuery(self):
