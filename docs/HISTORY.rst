@@ -2,16 +2,21 @@ Changelog
 =========
 
 3.0.0 (2015-02-24)
-------------------
+-----------------
+
+* Adding internationalisation_
+  
+  + Adding a German translation (thanks, Alice_)
 
 * Renaming the product `gs.group.messages.topic.start`_ from
   ``gs.group.messages.starttopic``
-* Adding internationalisation_
 
-.. _gs.group.messages.topic.start: 
-   https://github.com/groupserver/gs.group.messages.topic.start
 .. _internationalisation:
    https://www.transifex.com/projects/p/gs-group-messages-topic-start/
+.. _Alice: http://groupserver.org/p/alice
+.. _gs.group.messages.topic.start: 
+   https://github.com/groupserver/gs.group.messages.topic.start
+
 
 2.2.0 (2014-03-27)
 ------------------
