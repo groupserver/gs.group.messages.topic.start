@@ -1,5 +1,5 @@
-"use strict";
-// Copyright © 2013, 2014 OnlineGroups.net and Contributors.
+'use strict';
+// Copyright © 2013, 2014, 2016 OnlineGroups.net and Contributors.
 // All Rights Reserved.
 //
 // This software is subject to the provisions of the Zope Public License,
@@ -11,9 +11,8 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 jQuery.noConflict();
 
-function GSGroupMessagesStartTopic (topicInputId) {
-    
-    var topicInput=null, topics=null;
+function GSGroupMessagesStartTopic(topicInputId) {
+    var topicInput = null, topics = null;
 
     function topic_source(query, process) {
         function load(data) {
@@ -35,6 +34,6 @@ function GSGroupMessagesStartTopic (topicInputId) {
 }
 
 
-jQuery(window).load( function () {
+jQuery(window).load(function() {
     GSGroupMessagesStartTopic('#form\\.topic');
 });
