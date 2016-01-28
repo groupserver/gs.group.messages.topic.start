@@ -125,10 +125,10 @@
     </div><!--gs-group-messages-starttopic-->
     <tal:block metal:fill-slot="javascript">
       <script type="text/javascript"
-              src="/++resource++gs-group-messages-startopic-min-20140327.js"
+              src="/++resource++gs-group-messages-startopic-min-20160128.js"
               defer="defer"> </script>
       <script type="text/javascript"
-              src="/++resource++gs-group-messages-topic-compose-min-20140327.js"
+              src="/++resource++gs-group-messages-topic-compose-min-20160127.js"
               defer="defer"> </script>
     </tal:block>
   </body>
