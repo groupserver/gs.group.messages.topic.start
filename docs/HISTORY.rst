@@ -1,5 +1,15 @@
 Changelog
 =========
+3.0.2 (2016-01-28)
+------------------
+
+* [DE] Updating the German translation, thanks to Cousin Clara
+* [FR] Updating the French translation, thanks to `Razique
+  Mahroua`_
+* Following the changes to `gs.group.messages.topic.base`_
+
+.. _gs.group.messages.topic.base:
+   https://github.com/groupserver/gs.group.messages.topic.base
 
 3.0.1 (2015-03-11)
 ------------------
@@ -14,7 +24,7 @@ Changelog
 -----------------
 
 * Adding internationalisation_
-  
+
   + Adding a German translation (thanks, Alice_)
 
 * Renaming the product `gs.group.messages.topic.start`_ from
@@ -23,7 +33,7 @@ Changelog
 .. _internationalisation:
    https://www.transifex.com/projects/p/gs-group-messages-topic-start/
 .. _Alice: http://groupserver.org/p/alice
-.. _gs.group.messages.topic.start: 
+.. _gs.group.messages.topic.start:
    https://github.com/groupserver/gs.group.messages.topic.start
 
 
